@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{398F2E98-0EF5-404E-86A6-738BB7DFD769}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharpeter.UI", "UI\Sharpeter.UI\Sharpeter.UI.csproj", "{AA909496-9082-4D8F-B3F4-68EE600DB2EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA909496-9082-4D8F-B3F4-68EE600DB2EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA909496-9082-4D8F-B3F4-68EE600DB2EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA909496-9082-4D8F-B3F4-68EE600DB2EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA909496-9082-4D8F-B3F4-68EE600DB2EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AA909496-9082-4D8F-B3F4-68EE600DB2EE} = {398F2E98-0EF5-404E-86A6-738BB7DFD769}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB6B7763-C78B-48D4-B52D-E275D45DA0F2}
+	EndGlobalSection
+EndGlobal
