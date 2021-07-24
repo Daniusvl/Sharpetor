@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{398F2E98-0EF5-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E1B84826-EDFE-40FC-BDAA-63AD641D7799}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharpetor.UI", "Sharpetor.UI\Sharpetor.UI.csproj", "{95176E81-0FBE-4ABC-B945-2726E9546786}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharpetor.UI", "UI\Sharpetor.UI\Sharpetor.UI.csproj", "{95176E81-0FBE-4ABC-B945-2726E9546786}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
