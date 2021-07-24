@@ -16,7 +16,7 @@ namespace Sharpetor.CoreLib
       List<Template> output = new ();
       foreach(string line in trimmed.Split('\n'))
       {
-        if(!string.IsNullOrEmpty(line) && !line.StartsWith("Templates") && !line.StartsWith("---"))
+        if(!string.IsNullOrEmpty(line) && !line.StartsWith("Template") && !line.StartsWith("---"))
         {
           List<string> splited = line.Split("  ")
             .Where(s => !string.IsNullOrEmpty(s)).
