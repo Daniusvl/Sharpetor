@@ -15,7 +15,7 @@
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.6" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Sharpetor.UILib\Sharpetor.UILib.csproj" />
-    <ProjectReference Include="..\Core\Sharpetor.CoreLib\Sharpetor.CoreLib.csproj" />
+    <ProjectReference Include="..\..\Core\Sharpetor.UILib\Sharpetor.UILib.csproj" />
+    <ProjectReference Include="..\..\Core\Sharpetor.CoreLib\Sharpetor.CoreLib.csproj" />
   </ItemGroup>
 </Project>
