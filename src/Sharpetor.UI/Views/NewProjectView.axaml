@@ -1,0 +1,42 @@
+<Window xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:views="clr-namespace:Sharpetor.UI.Views" 
+  x:Class="Sharpetor.UI.Views.NewProjectView" Icon="/Resources/avalonia-logo.ico" MinWidth="800" MinHeight="550" Width="800" Height="550" Title="New Project">
+
+  <StackPanel Margin="5">
+    <TextBlock Text="Choose project template" FontSize="20"/>
+    <ScrollViewer>
+    <Grid Height="300">
+        <ListBox Items="{Binding Templates}" SelectedItem="{Binding SelectedTemplate}">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel>
+                <TextBlock Text="{Binding TemplateName}"/>
+                <TextBlock Text="{Binding ShortName}"/>
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+    </ScrollViewer>
+    <StackPanel Margin="5">
+      <Label Content="Command"  HorizontalAlignment="Center"/>
+      <TextBox IsReadOnly="True" Text="{Binding Command}" HorizontalAlignment="Center" />
+        
+      <Label Content="Template"  HorizontalAlignment="Left"/>
+      <TextBox IsReadOnly="True" Text="{Binding Template}"/>
+      
+      <Label Content="Path"  HorizontalAlignment="Left"/>
+      <TextBox Text="{Binding Path}" />
+
+      <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+        <Button Margin="0, 0, 5, 0" Content="Create" Command="{Binding CreateProjectCmd}"></Button>
+        <TextBlock Text="{Binding ErrorMessage}" VerticalAlignment="Center"/>
+      </StackPanel>
+      
+    </StackPanel>
+  </StackPanel>
+
+</Window>

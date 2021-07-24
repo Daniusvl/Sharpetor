@@ -1,16 +1,20 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Avalonia.Interactivity;
+using Sharpetor.UILib;
 using Autofac;
+using System;
 
 namespace Sharpetor.UI.Views
 {
-    public partial class MainWindow : Window
+    public partial class NewProjectView : Window
     {
-        public MainWindow()
+        public NewProjectView()
         {
             InitializeComponent();
+            NewProjectViewModel context = ContainerFactory.Container.Resolve<NewProjectViewModel>();
+            context.CloseThis = () => this.Close();
+            DataContext = context;
 #if DEBUG
             this.AttachDevTools();
 #endif
@@ -19,13 +23,6 @@ namespace Sharpetor.UI.Views
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
-        }
-
-        private void NewProjectClick(object sender, RoutedEventArgs e)
-        {
-            ContainerFactory.Container
-                .Resolve<NewProjectView>()
-                .ShowDialog(this);
         }
     }
 }

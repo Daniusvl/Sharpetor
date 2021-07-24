@@ -2,7 +2,9 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:views="clr-namespace:Sharpetor.UI.Views" x:Class="Sharpetor.UI.Views.MainWindow" Icon="/Resources/avalonia-logo.ico" Width="800" Height="450" Title="Sharpetor">
+  xmlns:views="clr-namespace:Sharpetor.UI.Views" 
+  xmlns:uiLib="clr-namespace:Sharpetor.UILib"
+  x:Class="Sharpetor.UI.Views.MainWindow" Icon="/Resources/avalonia-logo.ico" Width="800" Height="450" Title="Sharpetor">
 
   <Grid>
     <Grid.RowDefinitions>
@@ -13,7 +15,7 @@
     <StackPanel Grid.Row="0">
       <Menu HorizontalAlignment="Left" VerticalAlignment="Top">
         <MenuItem Header="Project">
-          <MenuItem Header="New"></MenuItem>
+          <MenuItem Header="New" Click="NewProjectClick"></MenuItem>
           <MenuItem Header="Build"></MenuItem>
         </MenuItem>
         <MenuItem Header="File">
