@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Interactivity;
 using Autofac;
+using Sharpetor.UILib;
 
 namespace Sharpetor.UI.Views
 {
@@ -11,6 +12,12 @@ namespace Sharpetor.UI.Views
         public MainWindow()
         {
             InitializeComponent();
+
+
+            MainWindowViewModel context = ContainerFactory.Container.Resolve<MainWindowViewModel>();
+            context.LeftPanelDataContext.MainWindow = this;
+           
+            DataContext = context;
 #if DEBUG
             this.AttachDevTools();
 #endif

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using Sharpetor.CoreLib;
+using Prism.Events;
 
 namespace Sharpetor.UILib
 {
@@ -10,6 +11,7 @@ namespace Sharpetor.UILib
     public Action CloseThis { get; set; }
 
     private readonly IProcessExecutor _dotnetExecutor;
+    private readonly IEventAggregator _eventAggregator;
 
     public Command CreateProjectCmd{ get; }
 
@@ -22,6 +24,7 @@ namespace Sharpetor.UILib
         
         //                             Remove "dotnet " from Command
         _dotnetExecutor.ExecuteCommand(Command.Substring(7));
+        _eventAggregator.GetEvent<ProjectCreatedEvent>().Publish(Path);
         CloseThis?.Invoke();
       }
       else{
@@ -29,9 +32,10 @@ namespace Sharpetor.UILib
       }
     }
 
-    public NewProjectViewModel(IProcessExecutor dotnetExecutor, IDotnetParser dotnetParser)
+    public NewProjectViewModel(IProcessExecutor dotnetExecutor, IDotnetParser dotnetParser, IEventAggregator eventAggregator)
     {
       _dotnetExecutor = dotnetExecutor ?? throw new NullReferenceException(nameof(dotnetExecutor));
+      _eventAggregator = eventAggregator ?? throw new NullReferenceException(nameof(eventAggregator));
 
       string response = dotnetExecutor.ExecuteCommand("new -l");
       Templates = dotnetParser.TemplateListToTable(response) ?? throw new Exception();

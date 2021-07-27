@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        WindowStartupLocation="CenterScreen"
+        MinWidth="300" MinHeight="80"
+        Width="300" Height="80"
+        MaxWidth="400" MaxHeight="80"
+        x:Class="Sharpetor.UI.Views.AddFileView"
+        Icon="/Resources/avalonia-logo.ico"
+        Title="Enter file/folder name">
+  <StackPanel >
+    <TextBox Text="{Binding Name}" Margin="5" />
+    <StackPanel Orientation="Horizontal" Margin="5">
+      <Button Content="Execute" Command="{Binding AddCmd}" Margin="0,0,5,0" />
+      <TextBlock Text="{Binding ErrorMessage}" VerticalAlignment="Center"/>
+    </StackPanel>
+  </StackPanel>
+</Window>

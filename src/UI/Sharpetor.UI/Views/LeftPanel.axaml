@@ -2,7 +2,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:local="clr-namespace:Sharpetor.UI"
+             xmlns:uiLib="clr-namespace:Sharpetor.UILib;assembly=Sharpetor.UILib"
+             mc:Ignorable="d"
              x:Class="Sharpetor.UI.Views.LeftPanel">
-  Welcome to Avalonia!
+
+  <UserControl.Resources>
+    <local:BitmapValueConverter x:Key="BitmapValueConverter" />
+  </UserControl.Resources>
+  
+  <StackPanel>
+    <TextBox Text="{Binding Path}" Margin="5"/>
+    <ScrollViewer>
+      <Grid Height="{Binding FileExplorerHeight}">
+        <TreeView x:Name="FileExplorer" Items="{Binding ProjectFiles}" Margin="5" >
+
+          <TreeView.Styles>
+
+            <Style Selector="TreeViewItem">
+              <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+              <Setter Property="ContextMenu" Value="{Binding ContextMenu}"/>
+            </Style>
+           
+            
+          </TreeView.Styles>
+
+          <TreeView.DataTemplates>
+
+            <TreeDataTemplate DataType="{x:Type uiLib:FileExplorerItemViewModel}" ItemsSource="{Binding Children}">
+              <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding ImageSource, Converter={StaticResource BitmapValueConverter}}" Width="25" Height="25"/>
+                <TextBlock Text="{Binding ItemName}" VerticalAlignment="Center" Margin="5, 0, 0, 0" />
+              </StackPanel>
+            </TreeDataTemplate>
+            
+          </TreeView.DataTemplates>
+          
+        </TreeView>
+      </Grid>
+    </ScrollViewer>
+  </StackPanel>
 </UserControl>

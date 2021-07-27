@@ -3,7 +3,6 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:views="clr-namespace:Sharpetor.UI.Views" 
-  xmlns:uiLib="clr-namespace:Sharpetor.UILib"
   x:Class="Sharpetor.UI.Views.MainWindow" Icon="/Resources/avalonia-logo.ico" Width="800" Height="450" Title="Sharpetor">
 
   <Grid>
@@ -37,7 +36,7 @@
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <views:LeftPanel Grid.Column="0" Grid.Row="1" />
+      <views:LeftPanel Grid.Column="0" Grid.Row="1" DataContext="{Binding LeftPanelDataContext}" />
 
       <GridSplitter Grid.Column="1" Grid.Row="1" Background="Black"/>
 

@@ -8,11 +8,19 @@
     <AvaloniaResource Include="Resources\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\c#.png" />
+    <None Remove="Resources\file.png" />
+    <None Remove="Resources\folder.png" />
+    <None Remove="Resources\project.png" />
+    <None Remove="Resources\solution.png" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="6.2.0" />
     <PackageReference Include="Avalonia" Version="0.10.6" />
     <PackageReference Include="Avalonia.Desktop" Version="0.10.6" />
     <PackageReference Include="Avalonia.Diagnostics" Version="0.10.6" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.6" />
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Sharpetor.UILib\Sharpetor.UILib.csproj" />
