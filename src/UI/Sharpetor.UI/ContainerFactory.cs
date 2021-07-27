@@ -17,6 +17,9 @@ namespace Sharpetor.UI
                 .As<IEventAggregator>()
                 .SingleInstance();
 
+            builder.RegisterType<FileExplorerService>()
+                .As<IFileExplorerService>();
+
             builder.RegisterType<MainWindow>()
                 .AsSelf();
 

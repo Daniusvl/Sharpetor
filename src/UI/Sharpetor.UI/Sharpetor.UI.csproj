@@ -5,14 +5,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <AvaloniaResource Include="Resources\**" />
+    <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Resources\c#.png" />
-    <None Remove="Resources\file.png" />
-    <None Remove="Resources\folder.png" />
-    <None Remove="Resources\project.png" />
-    <None Remove="Resources\solution.png" />
+    <AvaloniaResource Include="Images\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\cs.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.2.0" />

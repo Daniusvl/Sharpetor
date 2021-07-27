@@ -3,7 +3,7 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:views="clr-namespace:Sharpetor.UI.Views" 
-  x:Class="Sharpetor.UI.Views.MainWindow" Icon="/Resources/avalonia-logo.ico" Width="800" Height="450" Title="Sharpetor">
+  x:Class="Sharpetor.UI.Views.MainWindow" Icon="/Assets/avalonia-logo.ico" Width="800" Height="450" Title="Sharpetor">
 
   <Grid>
     <Grid.RowDefinitions>

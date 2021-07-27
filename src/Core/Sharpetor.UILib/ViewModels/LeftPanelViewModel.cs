@@ -4,12 +4,15 @@ using Avalonia.Controls;
 using System.IO;
 using System.Linq;
 using System.Collections.ObjectModel;
+using Sharpetor.CoreLib;
 
 namespace Sharpetor.UILib
 {
     public class LeftPanelViewModel : BaseViewModel
     {
         private readonly IEventAggregator _eventAggregator;
+        private readonly IFileExplorerService _fileExplorerService;
+
         private readonly FileExplorerLoader _fileExplorerLoader;
 
         private Window mainWindow;
@@ -20,7 +23,7 @@ namespace Sharpetor.UILib
                 FileExplorerHeight = MainWindow.Height - 100;
             } }
 
-        public LeftPanelViewModel(IEventAggregator eventAggregator)
+        public LeftPanelViewModel(IEventAggregator eventAggregator, IFileExplorerService fileExplorerService)
         {
             _eventAggregator = eventAggregator ?? throw new NullReferenceException(nameof(eventAggregator));
             _eventAggregator.GetEvent<ProjectCreatedEvent>().Subscribe(path =>
@@ -35,6 +38,8 @@ namespace Sharpetor.UILib
                     Path = path;
                 }
             });
+
+            _fileExplorerService = fileExplorerService ?? throw new NullReferenceException(nameof(fileExplorerService));
 
             ContextMenuEvents.DeleteFileClick = DeleteFile;
             ContextMenuEvents.DeleteFolderClick = DeleteFolder;
@@ -57,60 +62,42 @@ namespace Sharpetor.UILib
 
         public void NewFile(string path, string name)
         {
-            void AddFile()
-            {
-                if (Directory.Exists(path) && !File.Exists(name) && !string.IsNullOrEmpty(name))
-                {
-                    if (Path.EndsWith('\\'))
-                        path = new string(path.SkipLast(1).ToArray());
-                    File.Create($@"{path}\{name}");
-                    ProjectFiles = _fileExplorerLoader.Reload(ProjectFiles);
-                }
-            }
+            _fileExplorerService.NewFile(path, name);
 
-            if (name.Contains('\\') && Directory.Exists(path))
-            {
-                path += @$"\{string.Join('\\', name.Split('\\').SkipLast(1))}";
-                Directory.CreateDirectory(path);
-                name = name.Split('\\').Last();
-                AddFile();
-            }
-            else AddFile();
+            ProjectFiles = _fileExplorerLoader.Reload(ProjectFiles);
         }
 
         public void NewFolder(string path, string name)
         {
-            Directory.CreateDirectory($@"{path}\{name}");
+            _fileExplorerService.NewFolder(path, name);
+
             ProjectFiles = _fileExplorerLoader.Reload(ProjectFiles);
         }
 
         public void RenameFolderProjectSolution(string path, string newName)
         {
-            string newPath = @$"{string.Join('\\', path.Split('\\').SkipLast(1))}\{newName}";
-            if (!Directory.Exists(newPath))
-                Directory.Move(path, newPath);
+            _fileExplorerService.RenameFolderProjectSolution(path, newName);
+
             ProjectFiles = _fileExplorerLoader.Reload(ProjectFiles);
         }
 
         public void RenameFile(string path, string newName)
         {
-            string newPath = @$"{string.Join('\\', path.Split('\\').SkipLast(1))}\{newName}";
-            if (!File.Exists(newPath))
-                File.Move(path, newPath);
+            _fileExplorerService.RenameFile(path, newName);
+
             ProjectFiles = _fileExplorerLoader.Reload(ProjectFiles);
         }
 
         private void DeleteFile(string path)
         {
-            if (File.Exists(path))
-                File.Delete(path);
+            _fileExplorerService.DeleteFile(path);
+
             ProjectFiles = _fileExplorerLoader.Reload(ProjectFiles);
         }
 
         private void DeleteFolder(string path)
         {
-            if (Directory.Exists(path))
-                Directory.Delete(path, true);
+            _fileExplorerService.DeleteFolder(path);
 
             ProjectFiles = _fileExplorerLoader.Reload(ProjectFiles);
         }
